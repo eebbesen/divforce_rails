@@ -24,7 +24,6 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    byebug
     @review = Review.new(review_params)
     @review.reviewable =
       if (review_params[:reviewable_type] == 'employer')
