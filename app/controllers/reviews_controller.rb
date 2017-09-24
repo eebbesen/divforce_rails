@@ -24,11 +24,12 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
+    byebug
     @review = Review.new(review_params)
     @review.reviewable =
-      if (request.params[:reviewable_type] == 'employer')
+      if (review_params[:reviewable_type] == 'employer')
         Employer.find review_params[:reviewee]
-      elsif (request.params[:reviewable_type] == 'recruiter')
+      elsif (review_params[:reviewable_type] == 'recruiter')
         Recruiter.find review_params[:reviewee]
       end
 

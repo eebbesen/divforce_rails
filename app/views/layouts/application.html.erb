@@ -12,6 +12,8 @@
     <div class="container">
       <%= yield %>
     </div>
-    <%= render 'home_nav' %>
+    <% unless controller_name == "static" %>
+      <%= render 'home_nav' %>
+    <% end %>
   </body>
 </html>

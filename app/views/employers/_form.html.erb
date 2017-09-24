@@ -11,27 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="row">
+    <div class="col col-1 field">
+      <%= f.label :name %>
+    </div>
+    <div class="col">
+      <%= f.text_field :name %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :industry %>
-    <%= f.text_field :industry %>
+  <div class="row">
+    <div class="col col-1 field">
+      <%= f.label :industry %>
+    </div>
+    <div class="col">
+      <%= f.text_field :industry %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :certified %>
-    <%= f.check_box :certified %>
+  <div class="row">
+    <div class="col col-1 field">
+      <%= f.label :certified %>
+    </div>
+    <div class="col">
+      <%= f.check_box :certified %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :notes %>
-    <%= f.text_area :notes %>
+  <div class="row">
+    <div class="col col-1 field">
+      <%= f.label :notes %>
+    </div>
+    <div class="col">
+      <%= f.text_area :notes %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <!-- <%= f.submit 'Update', class: 'btn btn-primary' %> -->
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
+
 <% end %>
