@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h2><strong><%= @recruiter.name %></strong></h2>
+  <h1 class="text-center"><strong><%= @recruiter.name %></strong></h1>
 </p>
 
 <p>
@@ -15,3 +15,25 @@
 </p>
 
 <%= link_to 'Edit', edit_recruiter_path(@recruiter), class: 'btn-secondary btn-sm' %>
+
+<hr class="section-divider">
+<p/>
+  <h2><strong>Reviews</strong></h2>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Date Created</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recruiter.reviews.each do |rev|%>
+      <tr>
+        <td><%= link_to rev.text, review_path(rev) %></td>
+        <td><%= rev.created_at.strftime('%B %d, %Y') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Create review', new_review_path(reviewee: @recruiter, reviewable_type: 'recruiter'), class: 'btn btn-primary' %>
