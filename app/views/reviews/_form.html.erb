@@ -11,19 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="row">
+    <div class="col col-1 field">
     <%= f.label :reviewer %>
-    <%= f.text_field :reviewer %>
+    </div>
+    <div class="col">
+      <%= f.text_field :reviewer %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :text %>
-    <%= f.text_field :text %>
+  <div class="row">
+    <div class="col col-1 field">
+      <%= f.label :text %>
+    </div>
+    <div class="col">
+      <%= f.text_field :text %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 
   <%= f.hidden_field :reviewee, value: params[:reviewee] %>
+  <%= f.hidden_field :reviewable_type, value: params[:reviewable_type] %>
 <% end %>

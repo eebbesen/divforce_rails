@@ -17,7 +17,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create review for employer" do
     assert_difference('Review.count') do
-      post "#{reviews_url}?reviewable_type=employer", params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text } }
+      post reviews_url, params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text, reviewable_type: 'employer' } }
     end
 
     assert_redirected_to "#{employers_url}/#{@review.reviewee}"
@@ -25,7 +25,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create review for recruiter" do
     assert_difference('Review.count') do
-      post "#{reviews_url}?reviewable_type=recruiter", params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text } }
+      post reviews_url, params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text, reviewable_type: 'recruiter' } }
     end
 
     assert_redirected_to "#{recruiters_url}/#{@review.reviewee}"

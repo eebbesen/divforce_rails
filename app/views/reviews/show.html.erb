@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Reviewer:</strong>
-  <%= @review.reviewer %>
-</p>
-
-<p>
-  <strong>Reviewee:</strong>
-  <%= @review.reviewee %>
-</p>
-
-<p>
-  <strong>Text:</strong>
   <%= @review.text %>
 </p>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<hr class="section-divider">
+
+<p><small>
+  Review of
+  <% if @review.reviewable_type == 'Employer' %>
+    <%= Employer.find(@review.reviewee).name %>
+  <% elsif @review.reviewable_type == 'Recruiter' %>
+    <%= Recruiter.find(@review.reviewee).name %>
+  <% end %>
+  by <%= @review.reviewer %>
+</small></p>
