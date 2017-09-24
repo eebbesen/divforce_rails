@@ -25,7 +25,6 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    byebug
     @review.reviewable =
       if (request.referer.include?('?reviewable_type=employer'))
         Employer.find review_params[:reviewee]
