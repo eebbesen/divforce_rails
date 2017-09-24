@@ -24,7 +24,7 @@ class ReqsController < ApplicationController
   # POST /reqs
   # POST /reqs.json
   def create
-    @req = Req.new(req_params.merge(employer_id: "1"))
+    @req = Req.new(req_params)
 
     respond_to do |format|
       if @req.save
@@ -69,6 +69,6 @@ class ReqsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def req_params
-      params.require(:req).permit(:title, :description)
+      params.require(:req).permit(:title, :description, :employer_id)
     end
 end
