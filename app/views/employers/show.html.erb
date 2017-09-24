@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h2><strong><%= @employer.name %></strong></h2>
+  <h1 class="text-center"><strong><%= @employer.name %></strong></h1>
 </p>
 
 <p>
@@ -20,9 +20,9 @@
 </p>
 
 <%= link_to 'Edit', edit_employer_path(@employer), class: 'btn-secondary btn-sm' %>
-<hr>
 
-<p>
+<hr>
+<p/>
   <h2><strong>Reqs</strong></h2>
   <table class="table">
   <thead>
@@ -36,10 +36,31 @@
     <% @employer.reqs.each do |req|%>
       <tr>
         <td><%= link_to req.title, req_path(req) %></td>
-        <td><%= req.created_at %></td>
+        <td><%= req.created_at.strftime('%B %d, %Y') %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <%= link_to 'Create req', new_req_path(employer_id: @employer), class: 'btn btn-primary' %>
+
+<hr>
+<p/>
+  <h2><strong>Reviews</strong></h2>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Date Created</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employer.reviews.each do |rev|%>
+      <tr>
+        <td><%= link_to rev.text, review_path(rev) %></td>
+        <td><%= rev.created_at.strftime('%B %d, %Y') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Create review', new_review_path(reviewee: @employer), class: 'btn btn-primary' %>
