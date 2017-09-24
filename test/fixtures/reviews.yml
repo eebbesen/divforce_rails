@@ -2,10 +2,14 @@
 
 one:
   reviewer: MyString
-  reviewee: MyString
+  reviewee: 1
+  reviewable_type: 'Employer'
+  reviewable_id: 1
   text: MyString
 
 two:
   reviewer: MyString
-  reviewee: MyString
+  reviewee: 1
+  reviewable_type: 'Recruiter'
+  reviewable_id: 1
   text: MyString

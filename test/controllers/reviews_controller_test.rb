@@ -15,12 +15,20 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create review" do
+  test "should create review for employer" do
     assert_difference('Review.count') do
-      post reviews_url, params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text } }
+      post "#{reviews_url}?reviewable_type=employer", params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text } }
     end
 
-    assert_redirected_to review_url(Review.last)
+    assert_redirected_to "#{employers_url}/#{@review.reviewee}"
+  end
+
+  test "should create review for recruiter" do
+    assert_difference('Review.count') do
+      post "#{reviews_url}?reviewable_type=recruiter", params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text } }
+    end
+
+    assert_redirected_to "#{recruiters_url}/#{@review.reviewee}"
   end
 
   test "should show review" do
@@ -35,7 +43,7 @@ class ReviewsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update review" do
     patch review_url(@review), params: { review: { reviewee: @review.reviewee, reviewer: @review.reviewer, text: @review.text } }
-    assert_redirected_to review_url(@review)
+    assert_redirected_to "#{employers_url}/#{@review.reviewee}"
   end
 
   test "should destroy review" do
