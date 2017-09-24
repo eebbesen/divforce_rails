@@ -10,5 +10,5 @@
   <%= @req.description %>
 </p>
 
-<%= link_to 'Edit', edit_req_path(@req) %> |
-<%= link_to 'Back', reqs_path %>
+<%= link_to 'Edit', edit_req_path(@req), class: 'btn-primary btn-sm' %>
+<%= link_to 'Back', employer_path(@req.employer), class: 'btn-primary btn-sm' %>
