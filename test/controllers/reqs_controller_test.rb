@@ -11,7 +11,7 @@ class ReqsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_req_url
+    get new_req_url(employer_id: 1)
     assert_response :success
   end
 
