@@ -17,10 +17,10 @@ class ReqsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create req" do
     assert_difference('Req.count') do
-      post reqs_url, params: { req: { description: @req.description, title: @req.title } }
+      post reqs_url, params: { req: { description: @req.description, title: @req.title, employer_id: Employer.first.id } }
     end
 
-    assert_redirected_to req_url(Req.last)
+    assert_redirected_to "#{employers_url}/#{Employer.first.id}"
   end
 
   test "should show req" do
@@ -35,7 +35,7 @@ class ReqsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update req" do
     patch req_url(@req), params: { req: { description: @req.description, title: @req.title } }
-    assert_redirected_to req_url(@req)
+    assert_redirected_to "#{employers_url}/#{Employer.first.id}"
   end
 
   test "should destroy req" do

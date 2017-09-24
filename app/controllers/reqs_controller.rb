@@ -24,6 +24,7 @@ class ReqsController < ApplicationController
   # POST /reqs
   # POST /reqs.json
   def create
+    # byebug
     @req = Req.new(req_params)
 
     respond_to do |format|
