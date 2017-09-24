@@ -25,7 +25,13 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    @review.reviewable = Employer.find(review_params[:reviewee])
+    byebug
+    @review.reviewable =
+      if (request.referer.include?('?reviewable_type=employer'))
+        Employer.find review_params[:reviewee]
+      elsif (request.referer.include?('?reviewable_type=recruiter'))
+        Recruiter.find review_params[:reviewee]
+      end
 
     respond_to do |format|
       if @review.save
@@ -70,6 +76,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:reviewer, :reviewee, :text)
+      params.require(:review).permit(:reviewer, :reviewee, :reviewable_type, :text)
     end
 end

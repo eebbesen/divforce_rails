@@ -63,4 +63,4 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Create review', new_review_path(reviewee: @employer), class: 'btn btn-primary' %>
+<%= link_to 'Create review', new_review_path(reviewee: @employer, reviewable_type: 'employer'), class: 'btn btn-primary' %>
