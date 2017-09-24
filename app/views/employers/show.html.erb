@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @employer.name %>
+  <h2><strong><%= @employer.name %></strong></h2>
 </p>
 
 <p>
@@ -20,15 +19,27 @@
   <%= @employer.notes %>
 </p>
 
-<%= link_to 'Edit', edit_employer_path(@employer) %> |
-<%= link_to 'Back', employers_path %>
+<%= link_to 'Edit', edit_employer_path(@employer), class: 'btn-secondary btn-sm' %>
 <hr>
 
 <p>
-  <strong>Reqs</strong>
-  <% @employer.reqs.each do |req|%>
-    <p><%= link_to req.title, req_path(req) %></p>
-  <% end %>
-</p>
+  <h2><strong>Reqs</strong></h2>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date Created</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Create req', new_req_path(employer_id: @employer) %>
+  <tbody>
+    <% @employer.reqs.each do |req|%>
+      <tr>
+        <td><%= link_to req.title, req_path(req) %></td>
+        <td><%= req.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Create req', new_req_path(employer_id: @employer), class: 'btn btn-primary' %>
