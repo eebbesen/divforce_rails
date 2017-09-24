@@ -27,7 +27,6 @@ class ReqsController < ApplicationController
     @req = Req.new(req_params)
 
     respond_to do |format|
-      byebug
       if @req.save
         format.html { redirect_to @req.employer, notice: 'Req was successfully created.' }
         format.json { render :show, status: :created, location: @req }
@@ -42,7 +41,6 @@ class ReqsController < ApplicationController
   # PATCH/PUT /reqs/1.json
   def update
     respond_to do |format|
-      byebug
       if @req.update(req_params.except(:employer_id))
         format.html { redirect_to @req.employer, notice: 'Req was successfully updated.' }
         format.json { render :show, status: :ok, location: @req }
