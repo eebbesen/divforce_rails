@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recruiter.name %>
+</p>
+
+<p>
+  <strong>Certified:</strong>
+  <%= @recruiter.certified %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @recruiter.notes %>
+</p>
+
+<%= link_to 'Edit', edit_recruiter_path(@recruiter) %> |
+<%= link_to 'Back', recruiters_path %>
